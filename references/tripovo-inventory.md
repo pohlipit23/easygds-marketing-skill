@@ -1,6 +1,6 @@
 # Tripovo Content & Inventory
 
-Tripovo is easyGDS's global content partner providing exclusive inventory access.
+Tripovo is easyGDS's global content provider for inventory access. Fully owned by easyGDS
 
 ## Inventory Scale
 
@@ -13,15 +13,17 @@ Tripovo is easyGDS's global content partner providing exclusive inventory access
 | Tours | 5,000+ |
 
 ## Hotel Partners
-- Amadeus
-- Hilton
-- IHG Hotels & Resorts
-- Wyndham Hotels & Resorts
-- Marriott Hotels, Resorts, Suites
-- Hotelbeds
-- Accor
-- WebBeds
-- Plus many more global chains, exclusive properties and bed banks
+
+| Partner | Type |
+|---------|------------------------------|
+| Amadeus | GDS |
+| Hilton | Direct chain agreement |
+| IHG Hotels & Resorts | Direct chain agreement |
+| Wyndham Hotels & Resorts | Direct chain agreement |
+| Marriott  | Direct chain agreement |
+| Hotelbeds | Bedbank |
+| WebBeds | Bedbank |
+| Juniper | 3rd party aggregator |
 
 ## Content Features
 - Content preference algorithms de-duplicate rates
@@ -30,7 +32,7 @@ Tripovo is easyGDS's global content partner providing exclusive inventory access
 - Individual hotel chain agreements
 - Live rates and instant confirmation
 
-## Activity Partners
+## Activity and Transfer Partners
 - Musement
 - Transferz
 - Hotelbeds
@@ -41,7 +43,7 @@ Tripovo is easyGDS's global content partner providing exclusive inventory access
 ### For Airlines
 - All the content customers expect
 - Leverage Tripovo's global inventory
-- Feed your own inventory alongside
+- Feed your own inventory and prioritize own contracts
 - Deliver best possible branded products
 
 ### For Travel Agents
@@ -49,19 +51,21 @@ Tripovo is easyGDS's global content partner providing exclusive inventory access
 - No upfront costs, no contracts
 - API-ready access
 - Direct partnerships
+- Ability to integrate with your existing content
 
 ### For Loyalty & Retail
 - Connect inventory to rewards programs
 - Point-based travel perks
 - Competitive rates on flights and hotels
+- Cash plus Points options
 
 ## Integration Options
 1. **Portal Access** - Web-based system to search, quote, book, issue vouchers/e-tickets
-2. **White Label** - Customers book directly while Tripovo manages post-booking
+2. **SAAS White Label** - Customers book directly while Tripovo manages post-booking
 3. **API Integration** - Plug inventory into your booking engine
 
 ## Getting Started
-- Free portal access for travel agents
+- Free, No Cost portal access for travel agents
 - No credit card required
 - No contracts, no delays
 - Instant access to global travel supply

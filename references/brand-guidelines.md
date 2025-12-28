@@ -32,10 +32,9 @@ easyGDS is the travel ecosystem for your brand. We provide airlines, travel agen
 ## Tone of Voice
 
 **We are:**
-- Calm
 - Direct
 - Problem solving
-- Precise
+- Precise and modest
 
 **Writing Rules:**
 - Short sentences
@@ -59,16 +58,16 @@ easyGDS is the travel ecosystem for your brand. We provide airlines, travel agen
 
 **Always:**
 - Prioritise clarity over cleverness
-- Speak from within the industry, not as marketers
+- Speak from a within the industry, not as marketers
 - Keep pricing and value transparent
 
 ## Value Proposition
-A single platform that allows airlines, travel agents and loyalty & retail businesses to manage distribution, pricing, packaging and servicing customers without cost or complexity.
+A complete ecosystem that allows airlines, travel agents and loyalty & retail businesses to build products, manage distribution, pricing, packaging and service customers without cost or complexity.
 
 **What we do:**
 - Transparent pricing
 - Technology built to scale
-- Product & Inventory competitive and quality
+- Product & Inventory that's competitive and quality
 
 **What we don't do:**
 - Hidden costs

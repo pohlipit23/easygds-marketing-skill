@@ -1,6 +1,6 @@
 ---
 name: easygds-marketing
-description: "Generate marketing and sales materials for easyGDS travel commerce platform. Use when creating sales emails, pitch decks, landing pages, proposals, LinkedIn posts, website copy, or any commercial communications for easyGDS. Covers all audiences - airlines, travel agents, loyalty, retail, national tourist boards."
+description: "Generate marketing and sales materials for easyGDS travel commerce platform. Use when creating sales emails, pitch decks, landing pages, proposals, LinkedIn posts, website copy, or any commercial communications for easyGDS. Covers all audiences - airlines, travel agents, loyalty, retail businesses."
 ---
 
 # easyGDS Marketing & Sales Content Generator
@@ -10,7 +10,7 @@ Generate on-brand marketing and sales materials for easyGDS.
 ## Before Creating Content
 
 1. Read `references/brand-guidelines.md` - tone, writing rules, guardrails
-2. Identify target audience (Airlines, Travel Agents, Loyalty & Retail, Tourist Boards, Other)
+2. Identify target audience (Airlines, Travel Agents, Loyalty & Retail, Other)
 3. Read relevant sections of `references/products.md` and `references/tripovo-inventory.md`
 4. For outreach emails, check `references/company.md` for team backgrounds and testimonials
 
@@ -20,7 +20,7 @@ Generate on-brand marketing and sales materials for easyGDS.
 Structure:
 - Hook: State the prospect's problem clearly
 - Solution: How easyGDS solves it (specific, not generic)
-- Proof: Reference relevant customer (Etihad, Malaysia Airlines, Amadeus)
+- Proof: Reference relevant customer (Etihad Holidays, Etihad Stopover, Malaysia Airlines Holidays, Amadeus)
 - Ask: Clear, single CTA
 
 Research the prospect first. Identify their specific pain points.
@@ -30,12 +30,12 @@ Structure:
 - Headline: Problem or outcome focused
 - Subhead: How easyGDS delivers
 - 3 key benefits (audience-specific)
-- Social proof
+- Customer References as proof
 - Single CTA
 
 ### Pitch Materials
 - Lead with customer problems, not features
-- Use concrete numbers (1M+ hotels, 80+ payment options, 950+ airlines)
+- Use actual solutions that easygds platform, technology, content, experience and services can provide
 - Include relevant testimonial
 - End with clear next step
 
@@ -47,24 +47,19 @@ Structure:
 ## Audience-Specific Messaging
 
 ### Airlines
-Pain points: Revenue leakage to OTAs, lack of ancillary revenue, complex tech integrations
-Lead with: Control, revenue growth, brand ownership
-Key products: Dynamic Packages, Stopover, Automated Cross Sell, Loyalty integration
+Pain points: Losing customers to OTAs through white-label partnerships, lack of non-air ancillary revenue, limited loyalty redemption opportunities, complex tech integrations
+Lead with: Customer and brand ownership, revenue growth, frequent flier member experience
+Key products: Airline Holiday platform with Dynamic Packages, Stopover, Automated non-air Cross Sell, Loyalty integration
 
 ### Travel Agents
-Pain points: Thin margins, competing with OTAs, manual processes
+Pain points: Limited competitive product, Thin margins, competing with OTAs, manual processes, no e-commerce B2C capabitlies
 Lead with: Better margins, competitive inventory, transparent pricing
 Key products: B2B/B2C Platform, GDS integration, markup control
 
 ### Loyalty & Retail
-Pain points: Want travel vertical without complexity, customer data ownership
-Lead with: Launch fast, keep customer relationship, global inventory
-Key products: White-label platform, Earn & Redeem, Tripovo inventory
-
-### National Tourist Boards
-Pain points: Promoting destinations, stimulating inbound tourism, working with travel trade
-Lead with: Partner ecosystem, destination packaging, marketing toolkit
-Key products: Dynamic Packages, Tours & Activities inventory, Promotional tools
+Pain points: Limited redemption opportunities for members, Travel vertical is complex, customer data ownership
+Lead with: Launch fast, keep customer relationship, global inventory, no complexity
+Key products: White-label platform, Integration into your loyalty platform, Earn & Redeem, Tripovo inventory
 
 ## Writing Checklist
 
@@ -75,6 +70,7 @@ Before finalising any content:
 - [ ] Problem-solving oriented?
 - [ ] Specific, not vague?
 - [ ] Would a travel industry insider say this?
+- [ ] Does it sound like it's written by me?
 
 ## Numbers to Use
 - 1M+ hotels
@@ -92,7 +88,7 @@ Before finalising any content:
 | Don't Say | Do Say |
 |-----------|--------|
 | "Unlock growth potential" | "Increase ancillary revenue by adding hotels to flight bookings" |
-| "Next-generation platform" | "Platform that scales from 10 to 10 million bookings" |
+| "Next-generation platform" | "Platform that scales from 10 to 10 million customers" |
 | "Seamless integration" | "Connect to Amadeus, Sabre or Travelport in days, not months" |
 | "Revolutionary solution" | "Single platform for distribution, pricing, and customer service" |
 | "Partner with us" | "Add hotels and activities to your booking flow" |
@@ -101,20 +97,20 @@ Before finalising any content:
 
 ### Cold Email to Airline CEO
 ```
-Subject: [Airline Name] holiday revenue
+Subject: [Airline Name] holidays, hotel redemptions and non-air ancillaries
 
-[First name],
+Dear [First name],
 
-Airlines like [Airline Name] lose significant ancillary revenue when passengers book hotels elsewhere after purchasing flights.
+Airlines like [Airline Name] lose ancillary revenue when your customers book hotels or tours elsewhere after they've booked their flight with you.
 
-easyGDS powers holiday platforms for [similar airline example]. We help airlines:
-- Capture hotel bookings under their own brand
-- Automate cross-sell via post-booking communications
-- Add 1M+ hotels without complex integrations
+easyGDS powers airline holiday platforms and travel retail for [similar airline example]. We help airlines:
+- Capture hotel bookings under their own brand rather than losing them to OTAs
+- Expand loyalty redemption to all travel poducts and expand your redemption catalogue
+- Provide a complete airline holiday platform including technology, products and Merchant of Record
 
 Malaysia Airlines and Etihad use our platform. Happy to share how [specific relevant benefit].
 
-15 minutes for a call?
+Would you have 15 minutes for a call?
 
 [Your name]
 ```
@@ -124,5 +120,5 @@ For [Audience]: [Specific Outcome] without [Objection/Pain]
 
 Examples:
 - "For Airlines: Capture holiday revenue under your brand without building from scratch"
-- "For Travel Agents: Access 1M hotels with margins you control"
+- "For Travel Agents: Access hotels, flights and tours globally with margins you control"
 - "For Tourist Boards: Partner with travel trade to promote [Destination] packages"

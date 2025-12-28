@@ -1,9 +1,9 @@
 # easyGDS Company Information
 
 ## Company Overview
-- Founded: 2002 (original), incorporated as easyGDS 2021
-- HQ: Kuala Lumpur, Malaysia
-- Size: 51-200 employees
+- Founded: 2021
+- HQ: Kuala Lumpur, Malaysia and London, UK
+- Size: 10 - 50 employees
 - Website: www.easygds.com
 
 ## Leadership Team
@@ -22,16 +22,10 @@
 ### AJ
 - Ex Google and Wego
 
-### Shakthi - CTO
-- Ex Motorola, Nielsen
-
 ## Key Customers
-- Etihad Airways
-- Malaysia Airlines
-- Amadeus
-- NATAS (National Association of Travel Agents Singapore)
-- Chan Brothers
-- 30+ industry leaders
+- Etihad Airways for Stopover and Etihad Holidays
+- Malaysia Airlines for Malaysia Airlines Holidays
+- Amadeus and NATAS (National Association of Travel Agents Singapore) in Singapore
 
 ## Customer Testimonials
 
@@ -45,20 +39,14 @@
 "I am pleased to recommend easyGDS as a reliable partner. Our collaboration over the past 5+ years has been marked by their exceptional service quality, innovation, and integrity. Ron and his team demonstrate professionalism and a strong commitment to our shared goals."
 
 ## Technology Partners
-- Amadeus (Altéa integration, GDS)
+- Amadeus (Altéa PSS integration, GDS for agents and airlines)
 - Travelport (GDS content, 650,000+ hotel properties)
 - Sabre (GDS)
 - AWS (infrastructure)
 - Worldpay / Wowpay (payments)
 
 ## Company Milestones
-- 2002: Original founding
 - 2021: Incorporated as easyGDS, signed Amadeus partnership
 - 2023: Etihad Holidays migrated to platform
-- 2024: 30+ industry leaders as clients
-
-## Team Differentiators
-- Every developer has travel tech background
-- 24/7 support from real humans
-- Team knows PNR, NDC, RM terminology
-- Combined decades of travel industry expertise
+- 2024: 30+ small and medium sized travel agents as clients
+- 2025: launch of Malaysia Airlines Holidays (MHholidays)

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One-Page Endgame (OPE) - easyGDS</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f8f9fa;
+            padding: 40px;
+            color: #1a1a1a;
+        }
+
+        .actions-bar {
+            max-width: 1200px;
+            margin: 0 auto 20px;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .action-btn.primary {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .action-btn.primary:hover {
+            background: #333;
+            transform: translateY(-1px);
+        }
+
+        .action-btn.secondary {
+            background: white;
+            color: #1a1a1a;
+            border: 1px solid #ddd;
+        }
+
+        .action-btn.secondary:hover {
+            background: #f5f5f5;
+            border-color: #ccc;
+        }
+
+        .action-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #1a1a1a;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .canvas {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 32px;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .meta {
+            display: flex;
+            gap: 24px;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            font-weight: 600;
+            padding: 6px 12px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            min-width: 140px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 0;
+        }
+
+        /* Row 1: Fundamentals */
+        .row-1 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .row-1 .cell:not(:last-child) {
+            border-right: 1px solid #ddd;
+        }
+
+        .cell-split {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cell-split .sub-cell {
+            flex: 1;
+            padding: 16px 20px;
+        }
+
+        .cell-split .sub-cell:first-child {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Row 2: Moats */
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 2px solid #1a1a1a;
+            background: #fef3c7;
+        }
+
+        .row-2 .cell:not(:last-child) {
+            border-right: 1px solid #ddd;
+        }
+
+        /* Row 3: Endgame + Values */
+        .row-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            border-bottom: 2px solid #1a1a1a;
+        }
+
+        .row-3 > div:first-child {
+            border-right: 1px solid #ddd;
+        }
+
+        /* Row 4: Timeline + Capabilities */
+        .row-4 {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-right: 1px solid #ddd;
+        }
+
+        .timeline .cell:not(:last-child) {
+            border-right: 1px solid #ddd;
+        }
+
+        .timeline .cell {
+            background: #dcfce7;
+        }
+
+        .right-stack {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right-stack .cell {
+            flex: 1;
+        }
+
+        .right-stack .cell:not(:last-child) {
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Cell styling */
+        .cell {
+            padding: 16px 20px;
+            min-height: 100px;
+        }
+
+        .cell-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .cell-title {
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            color: #333;
+        }
+
+        .cell-icon {
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .cell-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #444;
+        }
+
+        .cell-content ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .cell-content li {
+            padding: 4px 0;
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .cell-content li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #666;
+        }
+
+        /* Special cells */
+        .cell.endgame {
+            background: #dbeafe;
+        }
+
+        .cell.moat {
+            background: #fef3c7;
+        }
+
+        .cell.values {
+            background: #f3e8ff;
+        }
+
+        .cell.capabilities {
+            background: #fce7f3;
+        }
+
+        .cell.choices {
+            background: #fee2e2;
+        }
+
+        /* Footer */
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        .footer-left {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .footer-right {
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Markdown Section */
+        .markdown-section {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+
+        .markdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .markdown-header h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .markdown-content {
+            padding: 24px;
+            background: #1e1e1e;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .markdown-content pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #d4d4d4;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+        }
+
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .canvas {
+                box-shadow: none;
+            }
+            .actions-bar, .markdown-section {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toast" id="toast"></div>
+
+    <div class="actions-bar">
+        <button class="action-btn secondary" onclick="copyMarkdown()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            Copy Markdown
+        </button>
+        <button class="action-btn primary" onclick="saveAsImage()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Save as Image
+        </button>
+    </div>
+
+    <div class="canvas" id="canvas">
+        <div class="header">
+            <h1>One-Page Endgame (OPE)</h1>
+            <div class="meta">
+                <div class="meta-item">
+                    <span class="meta-label">Company Name</span>
+                    <span class="meta-value">easyGDS</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Designed by</span>
+                    <span class="meta-value">Pete</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label">Date</span>
+                    <span class="meta-value">January 1, 2026</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <!-- Row 1: Fundamentals -->
+            <div class="row-1">
+                <div class="cell">
+                    <div class="cell-header">
+                        <span class="cell-title">Obvious Choice</span>
+                        <span class="cell-icon">◉</span>
+                    </div>
+                    <div class="cell-content">Airline holiday platforms & content (white-label tech + inventory for airlines to capture their customers' hotel/activity bookings)</div>
+                </div>
+                <div class="cell">
+                    <div class="cell-header">
+                        <span class="cell-title">Ideal Customer</span>
+                        <span class="cell-icon">👤</span>
+                    </div>
+                    <div class="cell-content">National flag carriers with strong hub-and-spoke networks (e.g., Qatar Airways, Emirates) who can leverage both stopover solutions to promote their country AND airline holiday platforms to capture travel revenue</div>
+                </div>
+                <div class="cell cell-split">
+                    <div class="sub-cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Core Problem</span>
+                            <span class="cell-icon">🎯</span>
+                        </div>
+                        <div class="cell-content">Revenue leakage - airlines capture only flight revenue while losing all non-air revenue (hotels, activities, car rentals) to OTAs</div>
+                    </div>
+                    <div class="sub-cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Core Product</span>
+                            <span class="cell-icon">📦</span>
+                        </div>
+                        <div class="cell-content">All-in-one white-label travel retail platform - complete tech stack, global inventory (1M+ hotels, 250k+ activities), and Merchant of Record services</div>
+                    </div>
+                </div>
+                <div class="cell cell-split">
+                    <div class="sub-cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Primary Marketing Channels</span>
+                            <span class="cell-icon">📢</span>
+                        </div>
+                        <div class="cell-content">Direct outbound (email/LinkedIn to C-level execs), industry events (Routes, IATA conferences), referrals from existing airline clients</div>
+                    </div>
+                    <div class="sub-cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Geography</span>
+                            <span class="cell-icon">📍</span>
+                        </div>
+                        <div class="cell-content">Global approach - targeting top 20 flag carriers worldwide</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Row 2: Moats -->
+            <div class="row-2">
+                <div class="cell moat">
+                    <div class="cell-header">
+                        <span class="cell-title">Moat #1: Cornered Resource</span>
+                        <span class="cell-icon">🏰</span>
+                    </div>
+                    <div class="cell-content">Exclusive Tripovo inventory access and Amadeus partnership competitors can't replicate</div>
+                </div>
+                <div class="cell moat">
+                    <div class="cell-header">
+                        <span class="cell-title">Moat #2: Switching Costs</span>
+                        <span class="cell-icon">🏰</span>
+                    </div>
+                    <div class="cell-content">Deep integration into airline booking flows and operations makes switching prohibitively expensive</div>
+                </div>
+                <div class="cell moat">
+                    <div class="cell-header">
+                        <span class="cell-title">Moat #3: Cost Leadership</span>
+                        <span class="cell-icon">🏰</span>
+                    </div>
+                    <div class="cell-content">Lowest-cost provider in the market</div>
+                </div>
+            </div>
+
+            <!-- Row 3: Endgame + Values -->
+            <div class="row-3">
+                <div class="cell endgame">
+                    <div class="cell-header">
+                        <span class="cell-title">Endgame</span>
+                        <span class="cell-icon">🏆</span>
+                    </div>
+                    <div class="cell-content">Sell company for USD $100M in 5 years (by 2031)</div>
+                </div>
+                <div class="cell values">
+                    <div class="cell-header">
+                        <span class="cell-title">Core Values</span>
+                        <span class="cell-icon">💎</span>
+                    </div>
+                    <div class="cell-content"><strong>Simplicity</strong> - Complex travel problems, simple solutions<br><br><strong>Speed to Market</strong> - Move fast, iterate quickly</div>
+                </div>
+            </div>
+
+            <!-- Row 4: Timeline + Capabilities/Choices -->
+            <div class="row-4">
+                <div class="timeline">
+                    <div class="cell">
+                        <div class="cell-header">
+                            <span class="cell-title">1-Year Picture (2026)</span>
+                            <span class="cell-icon">📅</span>
+                        </div>
+                        <div class="cell-content">$43.46M revenue with 7 airline clients (3 small, 3 medium, 1 large) + 80 travel agencies (13 large)</div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Quarterly Picture (Q1 2026)</span>
+                            <span class="cell-icon">📅</span>
+                        </div>
+                        <div class="cell-content"><ul><li>Close 1 medium airline</li><li>Close 2 retail & loyalty partners</li><li>Secure $2.5M funding (20% equity)</li><li>5 airlines in discussions/RFQ/RFP</li></ul></div>
+                    </div>
+                    <div class="cell">
+                        <div class="cell-header">
+                            <span class="cell-title">Monthly Picture (Jan 2026)</span>
+                            <span class="cell-icon">📅</span>
+                        </div>
+                        <div class="cell-content"><ul><li>Close $2.5M funding</li><li>Contract 1 airline</li><li>Contract 1 loyalty partner</li></ul></div>
+                    </div>
+                </div>
+                <div class="right-stack">
+                    <div class="cell capabilities">
+                        <div class="cell-header">
+                            <span class="cell-title">Core Capabilities</span>
+                            <span class="cell-icon">⚙️</span>
+                        </div>
+                        <div class="cell-content">Internal structure between sales, product, and development teams integrated with agentic AI layer as company backbone - ensuring modern tech stack and AI-driven operations</div>
+                    </div>
+                    <div class="cell choices">
+                        <div class="cell-header">
+                            <span class="cell-title">Strategic Choices</span>
+                            <span class="cell-icon">🎲</span>
+                        </div>
+                        <div class="cell-content"><ul><li><strong>No B2C direct</strong> - Won't compete with customers</li><li><strong>No bespoke custom development</strong> - Product-only approach</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-left">Based on "The Product-Led Playbook" by Wes Bush | Generated with Claude</div>
+            <div class="footer-right">ProductLed®</div>
+        </div>
+    </div>
+
+    <div class="markdown-section">
+        <div class="markdown-header">
+            <h2>📄 Markdown Export</h2>
+            <button class="action-btn secondary" onclick="copyMarkdown()">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="width:16px;height:16px">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                </svg>
+                Copy
+            </button>
+        </div>
+        <div class="markdown-content">
+            <pre id="markdown-text"># One-Page Endgame (OPE) Canvas
+
+**Company:** easyGDS
+**Designed by:** Pete
+**Date:** January 1, 2026
+
+---
+
+## 🎯 Fundamentals
+
+### Obvious Choice
+Airline holiday platforms &amp; content (white-label tech + inventory for airlines to capture their customers' hotel/activity bookings)
+
+### Ideal Customer
+National flag carriers with strong hub-and-spoke networks (e.g., Qatar Airways, Emirates) who can leverage both stopover solutions to promote their country AND airline holiday platforms to capture travel revenue
+
+### Core Problem
+Revenue leakage - airlines capture only flight revenue while losing all non-air revenue (hotels, activities, car rentals) to OTAs
+
+### Core Product
+All-in-one white-label travel retail platform - complete tech stack, global inventory (1M+ hotels, 250k+ activities), and Merchant of Record services
+
+### Primary Marketing Channels
+Direct outbound (email/LinkedIn to C-level execs), industry events (Routes, IATA conferences), referrals from existing airline clients
+
+### Geography
+Global approach - targeting top 20 flag carriers worldwide
+
+---
+
+## 🏰 Competitive Moats
+
+### Moat #1: Cornered Resource
+Exclusive Tripovo inventory access and Amadeus partnership competitors can't replicate
+
+### Moat #2: Switching Costs
+Deep integration into airline booking flows and operations makes switching prohibitively expensive
+
+### Moat #3: Cost Leadership
+Lowest-cost provider in the market
+
+---
+
+## 🏆 Endgame &amp; Execution
+
+### Endgame
+Sell company for USD $100M in 5 years (by 2031)
+
+### Core Values
+**Simplicity** - Complex travel problems, simple solutions
+**Speed to Market** - Move fast, iterate quickly
+
+---
+
+## 📅 Milestones
+
+### 1-Year Picture (2026)
+$43.46M revenue with 7 airline clients (3 small, 3 medium, 1 large) + 80 travel agencies (13 large)
+
+### Quarterly Picture (Q1 2026)
+- Close 1 medium airline
+- Close 2 retail &amp; loyalty partners
+- Secure $2.5M funding (20% equity)
+- 5 airlines in discussions/RFQ/RFP
+
+### Monthly Picture (Jan 2026)
+- Close $2.5M funding
+- Contract 1 airline
+- Contract 1 loyalty partner
+
+---
+
+## ⚙️ Execution Requirements
+
+### Core Capabilities
+Internal structure between sales, product, and development teams integrated with agentic AI layer as company backbone - ensuring modern tech stack and AI-driven operations
+
+### Strategic Choices
+- **No B2C direct** - Won't compete with customers
+- **No bespoke custom development** - Product-only approach
+
+---
+
+*Based on "The Product-Led Playbook" by Wes Bush*</pre>
+        </div>
+    </div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function copyMarkdown() {
+            const markdown = document.getElementById('markdown-text').textContent;
+            navigator.clipboard.writeText(markdown).then(() => {
+                showToast('✓ Markdown copied to clipboard');
+            }).catch(err => {
+                showToast('Failed to copy');
+                console.error(err);
+            });
+        }
+
+        function saveAsImage() {
+            const canvas = document.getElementById('canvas');
+            const btn = event.target.closest('button');
+            btn.disabled = true;
+            btn.innerHTML = '<span>Generating...</span>';
+
+            html2canvas(canvas, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false
+            }).then(canvasEl => {
+                const link = document.createElement('a');
+                link.download = 'ope-canvas-easygds.png';
+                link.href = canvasEl.toDataURL('image/png');
+                link.click();
+                showToast('✓ Image downloaded');
+                btn.disabled = false;
+                btn.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Save as Image
+                `;
+            }).catch(err => {
+                showToast('Failed to generate image');
+                console.error(err);
+                btn.disabled = false;
+            });
+        }
+    </script>
+</body>
+</html>

@@ -7,6 +7,14 @@ description: "Generate marketing and sales materials for easyGDS travel commerce
 
 Generate on-brand marketing and sales materials for easyGDS.
 
+## Formatting Guidelines
+
+**Non-negotiable:**
+- **Dates**: Always use DD/MM/YYYY format (e.g., 01/01/2026)
+- **Numbers**: Use metric system only (km, kg, Celsius) - never imperial units
+- **Currency**: Specify currency symbol (e.g., £1M, €500K, $2.5M)
+- **Time format**: 24-hour format preferred (e.g., 14:30, not 2:30 PM)
+
 ## Before Creating Content
 
 1. Read `references/brand-guidelines.md` - tone, writing rules, guardrails

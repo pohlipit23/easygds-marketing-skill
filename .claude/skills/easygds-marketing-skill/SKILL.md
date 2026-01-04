@@ -223,7 +223,16 @@ Option B: You provide key information:
 Which would you prefer?
 ```
 
-**Step 2: Conduct Research** (if user chooses automated research)
+**Step 2: Spawn Research Agent** (if user chooses automated research)
+
+Use the Task tool to spawn a research agent that will:
+- Execute the research methodology below
+- Save findings to `output/research-[airline-slug]-[YYYYMMDD].md`
+- Return summary of classification and key findings
+
+This keeps the main agent's context window small while enabling deep research.
+
+**Research Agent Instructions:**
 
 **Phase 1: Web Search Intelligence** (using mcp__web-search-prime__webSearchPrime)
 

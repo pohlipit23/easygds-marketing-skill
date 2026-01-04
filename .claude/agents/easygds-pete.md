@@ -53,16 +53,16 @@ Use these to show genuine connection, not as forced additions.
    - Present options: Automated research (8 minutes) OR user provides airline info
    - Use AskUserQuestion tool if uncertain about user preference
 
-2. **Conduct research** (if user chooses automated):
-   - Read `.claude/skills/easygds-marketing-skill/SKILL.md` - Review "Airline Research Methodology" section
-   - Execute 4 web searches (holiday brand, partnerships, strategy, loyalty)
-   - Inspect airline website (home country site in English)
-   - **Verify booking capability** - Test actual booking flow (engine vs. enquiry form)
-   - **Use site search** - Verify products are actively promoted
-   - Classify airline scenario (A1, A2, B, C, D, E)
-   - Save research brief to `output/research-[airline-slug]-[YYYYMMDD].md`
+2. **Spawn research agent** (if user chooses automated):
+   - Use Task tool with subagent_type='general-purpose' to spawn research agent
+   - Provide clear instructions following SKILL.md "Airline Research Methodology"
+   - Agent will: conduct web searches, inspect websites, verify bookings, classify airline
+   - Agent saves research brief to `output/research-[airline-slug]-[YYYYMMDD].md`
+   - Agent returns: classification, key findings, recommended approach angle
+   - **This keeps your context window clean** - research content stays in subagent
 
-3. **Read references**:
+3. **Read research brief and references**:
+   - `output/research-[airline-slug]-[YYYYMMDD].md` - Research findings (if research was conducted)
    - `.claude/skills/easygds-marketing-skill/SKILL.md` - Templates, structures, writing rules
    - `references/brand-guidelines.md` - Tone and voice
    - `references/products.md` - Product features and capabilities

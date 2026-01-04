@@ -47,13 +47,64 @@ Use these to show genuine connection, not as forced additions.
 
 ## Workflow
 
-1. **Read the skill reference**: `.claude/skills/easygds-marketing-skill/SKILL.md` for templates, structures, and writing rules
-2. **Read product references**: `references/brand-guidelines.md`, `references/products.md`, `references/company.md`, `references/tripovo-inventory.md`
-3. **Identify audience**: Who are you writing to? What keeps them up at night?
-4. **Research**: If prospect outreach, understand their specific context
-5. **Draft**: Lead with their problem, show you understand their world, present solution with proof
-6. **Review**: Check against SKILL.md writing rules - no buzzwords, specific numbers, active voice
-7. **Output**: Save to `output/` directory with descriptive filename
+### For Airline Outreach (Sales Emails, Pitch Decks)
+
+1. **Ask user for research preference**
+   - Present options: Automated research (8 minutes) OR user provides airline info
+   - Use AskUserQuestion tool if uncertain about user preference
+
+2. **Conduct research** (if user chooses automated):
+   - Read `.claude/skills/easygds-marketing-skill/SKILL.md` - Review "Airline Research Methodology" section
+   - Execute 4 web searches (holiday brand, partnerships, strategy, loyalty)
+   - Inspect airline website (home country site in English)
+   - **Verify booking capability** - Test actual booking flow (engine vs. enquiry form)
+   - **Use site search** - Verify products are actively promoted
+   - Classify airline scenario (A1, A2, B, C, D, E)
+   - Save research brief to `output/research-[airline-slug]-[YYYYMMDD].md`
+
+3. **Read references**:
+   - `.claude/skills/easygds-marketing-skill/SKILL.md` - Templates, structures, writing rules
+   - `references/brand-guidelines.md` - Tone and voice
+   - `references/products.md` - Product features and capabilities
+   - `references/company.md` - Team backgrounds, customer testimonials
+   - `references/tripovo-inventory.md` - Inventory numbers
+
+4. **Identify approach angle**:
+   - Based on research classification, determine primary hook
+   - Select relevant proof points (Etihad, Malaysia Airlines, etc.)
+   - Identify what to avoid mentioning
+   - Craft timely, contextual subject line
+
+5. **Draft content**:
+   - Lead with their specific situation (not generic industry problem)
+   - Reference their brand, partnerships, or recent news
+   - Show you understand their world
+   - Present solution with proof
+   - Single, clear CTA
+
+6. **Review**:
+   - Check against SKILL.md writing rules
+   - No buzzwords, specific numbers, active voice
+   - Does it sound like Pete? Strategic, confident, relationship-focused?
+   - Would this resonate with a busy airline executive?
+
+7. **Output**:
+   - Save to `output/` directory with descriptive filename
+   - Format: `sales-email-[airline-slug]-[role].md` or `pitch-deck-[airline-slug].md`
+
+### For Other Content (Landing Pages, LinkedIn, Generic Marketing)
+
+1. **Read references**:
+   - `.claude/skills/easygds-marketing-skill/SKILL.md` - Templates and structures
+   - `references/brand-guidelines.md`, `references/products.md`, `references/company.md`
+
+2. **Identify audience**: Who are you writing to? What keeps them up at night?
+
+3. **Draft**: Lead with problem, show credibility, present solution, proof, CTA
+
+4. **Review**: Check against SKILL.md writing rules
+
+5. **Output**: Save to `output/` directory with descriptive filename
 
 ## Self-Correction
 

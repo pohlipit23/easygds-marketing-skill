@@ -21,6 +21,7 @@ Generate on-brand marketing and sales materials for easyGDS.
 2. Identify target audience (Airlines, Travel Agents, Loyalty & Retail, Other)
 3. Read relevant sections of `references/products.md` and `references/tripovo-inventory.md`
 4. For outreach emails, check `references/company.md` for team backgrounds and testimonials
+5. **For airline outreach:** Conduct research or ask user for airline information (see Research Methodology below)
 
 ## Writing Rules
 
@@ -184,9 +185,176 @@ Messages sent to existing LinkedIn connections.
 
 ---
 
+## Airline Research Methodology
+
+**Purpose:** Create contextual, informed outreach by understanding the airline's current situation before writing.
+
+### When to Research
+
+Research is required for:
+- Sales emails to specific airlines
+- Airline-focused landing pages or pitch decks
+- Content that references specific airline situations
+
+Skip research for:
+- Generic industry content
+- User already provided airline information
+- Follow-up emails where research was already done
+
+### Research Process
+
+**Step 1: Ask User First**
+
+Before starting research, present options:
+```
+I can research [Airline Name] to create contextual outreach, or you can provide information directly.
+
+Option A: I'll research (takes ~8 minutes):
+- Holiday brand and booking capabilities
+- Hotel/OTA partnerships
+- Recent news on ancillary strategy
+- Loyalty program scope
+
+Option B: You provide key information:
+- Does the airline have a holiday brand?
+- Any known partnerships or recent news?
+- Specific angle you want to take?
+
+Which would you prefer?
+```
+
+**Step 2: Conduct Research** (if user chooses automated research)
+
+**Phase 1: Web Search Intelligence** (using mcp__web-search-prime__webSearchPrime)
+
+Execute 4 strategic searches:
+
+1. **Holiday Brand Discovery**
+   - Query: `"[Airline] Holidays" OR "[Airline] vacation packages"`
+   - Look for: Official pages, branded products, press releases
+
+2. **Partnership Intelligence**
+   - Query: `"[Airline] hotel partnership" OR "[Airline] Booking.com" OR "[Airline] Expedia"`
+   - Look for: White-label deals, OTA partnerships, powered-by mentions
+
+3. **Non-Air Ancillary Strategy**
+   - Query: `"[Airline] non-air ancillary" OR "[Airline] ancillary revenue strategy 2026"`
+   - Look for: Executive quotes, investor presentations, strategy announcements
+
+4. **Loyalty & Travel Products**
+   - Query: `"[Airline] [loyalty program name] redemption hotels" OR "[Airline] frequent flyer travel products"`
+   - Look for: Redemption options, travel marketplace, partner programs
+
+**Phase 2: Website Deep Dive** (using mcp__web-reader__webReader)
+
+1. **Home Country Site**
+   - Construct URL using home country domain in English
+   - Examples:
+     - Lufthansa: `lufthansa.com/de/en`
+     - Qatar Airways: `qatarairways.com/en-qa/homepage.html`
+     - Ethiopian: `ethiopianairlines.com`
+
+2. **Holiday Platform Inspection** (if found)
+   - Visit the holiday/packages website
+   - **Critical:** Test actual booking flow - click "Book Now"
+   - Verify: Real booking engine vs. enquiry form
+   - Check for: Dynamic pricing, payment integration, instant confirmation
+
+3. **Site Search Verification**
+   - Use airline's own search: Search for "holidays", "stopover", "hotel"
+   - Verify products are actively promoted (not just old pages)
+   - Check integration with main booking flow
+
+**Phase 3: Booking Capability Verification**
+
+**Red flags for enquiry-only (no real booking):**
+- "Contact us for pricing"
+- "Request a quote" or "Enquiry form"
+- Form asks for "preferred dates" (not actual availability)
+- No prices displayed
+- No payment gateway
+- Email-only contact method
+
+**Green flags for real booking engine:**
+- Calendar with actual availability
+- Prices displayed in real-time
+- Passenger details collection
+- Payment integration
+- Instant confirmation
+
+**Phase 4: Classification**
+
+Classify airline into scenario:
+
+- **A1 - Brand + Content, NO Tech** ⭐⭐⭐ **PRIME TARGET**
+  - Has holiday brand, no booking engine (enquiry forms only)
+  - Approach: "Add tech to make it transactional"
+
+- **A2 - Full Holiday Platform** ⭐
+  - Has brand + full booking engine
+  - Approach: "Expand globally" or "Upgrade tech"
+
+- **B - OTA White-Label** ⭐⭐
+  - Booking.com/Expedia powers hotel section
+  - Approach: "Own the customer, don't hand off"
+
+- **C - Affiliate Links** ⭐⭐
+  - Redirects to external sites
+  - Approach: "Capture revenue you're losing"
+
+- **D - No Holiday Offering** ⭐⭐⭐
+  - Nothing found
+  - Approach: "Untapped opportunity"
+
+- **E - Insufficient Data**
+  - Research inconclusive
+  - Approach: Neutral industry problem statement
+
+**Step 3: Save Research Brief**
+
+Save to: `output/research-[airline-slug]-[YYYYMMDD].md`
+
+Include:
+- Executive summary with classification
+- Holiday brand & offerings (with booking verification)
+- Technology partners (hotels, platforms)
+- Loyalty & redemption scope
+- Recent news & strategy
+- Recommended approach angle
+- Proof points to use
+- What to avoid mentioning
+- Source URLs
+
+**Step 4: Create Content Using Research**
+
+Reference research brief to:
+- Lead with their specific situation
+- Use timely hooks (recent announcements)
+- Avoid mentioning competitors they already work with
+- Choose relevant proof points
+- Craft contextual subject lines
+
+### Research Quality Checklist
+
+Before using research, verify:
+- [ ] Did I test the booking flow (not just trust web search)?
+- [ ] Did I use site search to verify active promotion?
+- [ ] Are findings from official sources (last 12-24 months)?
+- [ ] Have I identified a specific strategic gap or opportunity?
+- [ ] Can I reference something specific (not generic industry trends)?
+
+---
+
 ## Output
 
 Save generated content to the `output/` directory with descriptive filenames:
+
+**Marketing Content:**
 - `sales-email-qatar-airways-vp-distribution.md`
 - `linkedin-post-ancillary-revenue.md`
 - `landing-page-hotel-connectivity.md`
+
+**Research Briefs:**
+- `research-ethiopian-airlines-20260104.md`
+- `research-qatar-airways-20260105.md`
+- `research-lufthansa-20260106.md`

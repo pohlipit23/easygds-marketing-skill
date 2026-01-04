@@ -54,11 +54,11 @@ Use these to show genuine connection, not as forced additions.
    - Use AskUserQuestion tool if uncertain about user preference
 
 2. **Spawn research agent** (if user chooses automated):
-   - Use Task tool with subagent_type='general-purpose' to spawn research agent
-   - Provide clear instructions following SKILL.md "Airline Research Methodology"
-   - Agent will: conduct web searches, inspect websites, verify bookings, classify airline
-   - Agent saves research brief to `output/research-[airline-slug]-[YYYYMMDD].md`
-   - Agent returns: classification, key findings, recommended approach angle
+   - Use Task tool with subagent_type='general-purpose'
+   - Agent should use the **airline-research** skill
+   - Provide clear task: "Research [Airline Name] using the airline-research skill. Save brief to output/research-[airline-slug]-[YYYYMMDD].md and return classification and key findings."
+   - Research agent will: conduct web searches, inspect websites, verify bookings, classify airline
+   - Research agent saves brief and returns summary
    - **This keeps your context window clean** - research content stays in subagent
 
 3. **Read research brief and references**:
